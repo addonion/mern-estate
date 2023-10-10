@@ -1,5 +1,9 @@
-const About = () => {
-  return <div>About</div>;
-};
+import Layout from "../shared/Layout";
 
-export default About;
+export const About = () => {
+  return (
+    <Layout>
+      <h1>About</h1>
+    </Layout>
+  );
+};

@@ -1,5 +1,9 @@
-const SignUp = () => {
-  return <div>SignUp</div>;
-};
+import Layout from "../shared/Layout";
 
-export default SignUp;
+export const SignUp = () => {
+  return (
+    <Layout>
+      <h1>SignUp</h1>
+    </Layout>
+  );
+};

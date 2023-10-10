@@ -1,5 +1,9 @@
-const Profile = () => {
-  return <div>Profile</div>;
-};
+import Layout from "../shared/Layout";
 
-export default Profile;
+export const Profile = () => {
+  return (
+    <Layout>
+      <h1>Profile</h1>
+    </Layout>
+  );
+};

@@ -1,9 +1,9 @@
-const Home = () => {
+import Layout from "../shared/Layout";
+
+export const Home = () => {
   return (
-    <div className="container mx-auto">
-      Home <a href="/about">About</a>
-    </div>
+    <Layout>
+      <h1>Home page</h1>
+    </Layout>
   );
 };
-
-export default Home;
