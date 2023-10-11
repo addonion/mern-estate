@@ -12,11 +12,25 @@ mongoose
 
 const app = express();
 
+// Включаем json
 app.use(express.json());
 
+// Поднимаем сервер на порту
 app.listen(3000, () => {
   console.log(`Server on 3000 port`);
 });
 
+// Наши роуты для API
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
+
+// Middleware
+app.use((err, req, res, nexxt) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Initial Server Error";
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  });
+});
