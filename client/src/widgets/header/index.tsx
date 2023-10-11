@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="bg-slate-300 shadow-lg px-2 sm:px-0">
+    <header className="bg-slate-300 shadow-lg px-4">
       <div className="container mx-auto flex gap-4 justify-between items-center py-4 mb-6">
         <Link to="/" className="prose sm:prose-2xl font-bold">
           <span className="text-slate-500">Perm</span>
