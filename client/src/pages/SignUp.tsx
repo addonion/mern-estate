@@ -49,7 +49,7 @@ export const SignUp = () => {
   return (
     <Layout>
       <div className="max-w-lg mx-auto">
-        <h1 className="text-center font-bold">Sign Up</h1>
+        <h1 className="text-center font-bold">Регистрация</h1>
 
         <form ref={formSignUp} onSubmit={handlerSubmit} className="flex flex-col mt-6 gap-4">
           <input id="username" type="text" placeholder="Имя пользователя" className="w-full p-3 border rounded-lg" autoComplete="name" required />

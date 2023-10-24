@@ -1,17 +1,19 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Layout from "../shared/Layout";
 import { Link, useNavigate } from "react-router-dom";
+import type { RootState } from "../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { signInStart, signInSuccess, signInFailure } from "../features/user/userSlice";
 
 export const SignIn = () => {
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state: RootState) => state.user);
   const formSignIn = useRef<HTMLFormElement>(null);
 
   const navigation = useNavigate();
+  const dispatch = useDispatch();
 
   const handlerSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
 
     let formData = {};
 
@@ -31,24 +33,23 @@ export const SignIn = () => {
     });
 
     try {
+      dispatch(signInStart());
       const data = await res.json();
-      setLoading(false);
       if (data.success === false) {
-        setError(data.message);
+        dispatch(signInFailure(data.message));
         return;
       }
-      setError(null);
+      dispatch(signInSuccess(data));
       navigation("/profile");
     } catch {
-      setLoading(false);
-      setError("Ошибка сервера, попробуйте ещё раз");
+      dispatch(signInFailure("Ошибка сервера, попробуйте ещё раз"));
     }
   };
 
   return (
     <Layout>
       <div className="max-w-lg mx-auto">
-        <h1 className="text-center font-bold">Sign In</h1>
+        <h1 className="text-center font-bold">Войти</h1>
 
         <form ref={formSignIn} onSubmit={handlerSubmit} className="flex flex-col mt-6 gap-4">
           <input id="email" type="email" placeholder="E-mail" className="w-full p-3 border rounded-lg" autoComplete="email" required />

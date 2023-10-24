@@ -15,15 +15,21 @@ const Header = () => {
           <MagnifyingGlassIcon className="w-6 text-slate-400" />
         </form>
 
-        <ul className="flex gap-4">
+        <ul className="flex gap-4 xl:gap-6">
           <li className="hidden sm:inline">
-            <Link to="/">Home</Link>
+            <Link to="/" className="text-slate-700">
+              Главная
+            </Link>
           </li>
           <li className="hidden sm:inline">
-            <Link to="/about/">About</Link>
+            <Link to="/about/" className="text-slate-700">
+              О сервисе
+            </Link>
           </li>
           <li className="whitespace-nowrap">
-            <Link to="/sign-in">Sign In</Link>
+            <Link to="/sign-in" className="text-slate-700">
+              Вход
+            </Link>
           </li>
         </ul>
       </div>
